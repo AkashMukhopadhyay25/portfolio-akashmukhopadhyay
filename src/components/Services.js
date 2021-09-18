@@ -1,6 +1,10 @@
 import React from 'react'
 import SimpleImageSlider from "react-simple-image-slider";
 import {browserHistory} from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FaReact} from "react-icons/fa";
+import {FaNode} from "react-icons/fa";
+import {FaPython} from "react-icons/fa";
 
 
 
@@ -32,8 +36,21 @@ class Services extends React.Component {
     render(){
     return (
         <div className="service-page">
+            <h1>I Expertise In</h1>
+            <div className="service-icons">
+            <a>
+                <FaReact color="#90ee90" size="100"/>
+                </a>
+                <a>
+                <FaNode color="#90ee90" size="100"/>
+                </a>
+                <a>
+                <FaPython color="#90ee90" size="100"/>
+                </a>
+            </div>
+            <h1>Here Is a Glimpse To Some Of My Work</h1>
             <SimpleImageSlider
-            style={{ margin: '0 auto', padding: '2%', borderRadius: '50%' }}
+            style={{ margin: '0 auto', padding: '1%', marginTop: "5%"}}
         width={504}
         height={504}
         images={images}

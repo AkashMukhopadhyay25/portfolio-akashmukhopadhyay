@@ -4,11 +4,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap");
 
 :root {
+  --c-background: #f9f9f9;
+  --c-text: #666666;
+  --c-heading: #212121;
+  --c-primary: #f33490;
+  --c-accent: #f6c720;
   --primary-white: #fff;
-  --primary-green: green;
+  --primary-green: #90ee90;
   --primary-dark: rgba(255, 255, 255, 0);
   --primary-red: #ef4035;
   --primary-hover-red: #f33501;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-background: #333237;
+    --c-text: #f8f8f8;
+    --c-heading: #ffffff;
+    --c-primary: #ff82be;
+    --c-accent: #ff3040;
+  }
 }
 
 body {
@@ -53,9 +68,8 @@ nav ul li {
 
 .header-wrapper {
   position: relative;
-  background-color: #923cb5;
-  background-image: linear-gradient(147deg, #923cb5 0%, #000000 74%);
-
+  background-color: var(--c-background);
+  color: var(--c-text);
   background-size: cover;
   background-position: center;
   height: 95vh;
@@ -80,18 +94,18 @@ nav ul li {
 
 .main-info h1 {
   font-family: "Source Code Pro", monospace;
-  color: var(--primary-white);
+  color: var(--primary-green);
   padding-bottom: 5rem;
 }
 
 .main-info h2 {
   font-family: "Source Code Pro", monospace;
-  color: var(--primary-white);
+  color: var(--c-text);
 }
 
 .typed-text {
   font-size: 2rem;
-  color: var(--primary-white);
+  color: var(--primary-green);
 }
 
 @media (max-width: 768px) {
@@ -138,8 +152,7 @@ nav ul li {
 }
 
 .about-me {
-  background-color: #e84393;
-  background-image: linear-gradient(315deg, #e84393 0%, #000000 74%);
+  background-color: var(--c-background);
   height: 100%;
 }
 
@@ -150,7 +163,7 @@ nav ul li {
 }
 
 .about-me-img img {
-  background-color: #90ee90;
+  background-color: var(--primary-green);
   float: left;
   -moz-box-shadow: -1px -1px 1px rgb(75, 74, 74);
   -webkit-box-shadow: -2px -2px 2px rgb(75, 74, 74);
@@ -172,8 +185,8 @@ h2 {
   width: 50%;
   padding: 10px;
   font-family: "Roboto Slab", serif;
-  color: white;
-  background-color: var(--primary-dark);
+  color: var(--c-text);
+  background-color: var(--c-background);
   text-align: center;
 }
 
@@ -192,8 +205,8 @@ h2 {
 
 .about-me-text a:hover {
   color: aliceblue;
-  font-size: 1rem;
-  transition: 0.2s ease-out;
+  font-size: 2rem;
+  transition: 0.5s ease-out;
 }
 
 @media screen and (max-width: 768px) {
@@ -209,7 +222,7 @@ h2 {
 }
 
 .contact-me-background {
-  background-color: #fff;
+  background-color: #ffffff;
   text-align: center;
   height: 100%;
   overflow: hidden;
@@ -301,6 +314,25 @@ h2 {
 .service-page {
   margin: auto;
   width: 100%;
-  height: 90vh;
-  background-color: #000000;
+  height: 160vh;
+  background-color: var(--c-background);
+}
+
+.service-page h1 {
+  display: block;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 150;
+  padding-top: 5%;
+  margin-bottom: 3%;
+  color: var(--c-heading);
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.service-icons {
+  text-align: center;
+}
+.service-icons a {
+  padding: 5%;
+  color: #90ee90;
 }
