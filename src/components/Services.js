@@ -35,7 +35,7 @@ class Services extends React.Component {
     }
     render(){
     return (
-        <div className="service-page">
+        <div className="service-page" id="service">
             <h1>I Expertise In</h1>
             <div className="service-icons">
             <a>
@@ -48,11 +48,11 @@ class Services extends React.Component {
                 <FaPython color="#90ee90" size="100"/>
                 </a>
             </div>
-            <h1>Here Is a Glimpse To Some Of My Work</h1>
+            <h1 id="portfolio">Here Is a Glimpse To Some Of My Work</h1>
             <SimpleImageSlider
             style={{ margin: '0 auto', padding: '1%', marginTop: "5%"}}
-        width={504}
-        height={504}
+        width={600}
+        height={600}
         images={images}
         showBullets={sliderOptions.showBullets}
         showNavs={sliderOptions.showNavs}
