@@ -21,13 +21,13 @@ const AboutMe = () => {
                 I love designing, developing, consulting, <br/>speaking and writing about building high quality, accessible websites.<br/>
                 <br/>
                 <br/>
-                <a href="https://www.linkedin.com/in/akash-mukhopadhyay-352669148">
+                <a href="https://www.linkedin.com/in/akash-mukhopadhyay-352669148" target="_blank">
                     <FontAwesomeIcon icon={faLinkedin} size="2x" />
                 </a>
-                <a href="http://www.google.com">
+                <a href="https://github.com/AkashMukhopadhyay25" target="_blank">
                     <FontAwesomeIcon icon={faGithubSquare} size="2x" />
                 </a>
-                <a href="http://www.google.com">
+                <a href="https://www.instagram.com/__kaaashh__/" target="_blank">
                     <FontAwesomeIcon icon={faInstagramSquare} size="2x"/>
                 </a>
                 </p>

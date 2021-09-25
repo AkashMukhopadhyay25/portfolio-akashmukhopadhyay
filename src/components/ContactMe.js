@@ -2,7 +2,20 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faTelegramPlane} from "@fortawesome/free-brands-svg-icons";
 import image from "./image5.png";
-import { render } from '@testing-library/react';
+import { initializeApp } from "firebase/app";
+import { collection, addDoc, getDocs, query, where } from "firebase/firestore"; 
+import { getFirestore } from "firebase/firestore";
+
+const firebaseApp = initializeApp({
+  apiKey: "AIzaSyBDBvpbFPKEhfwGKQFiRgldW2aFCf_vo6o",
+  authDomain: "portfolio-app-4d3c8.firebaseapp.com",
+  projectId: "portfolio-app-4d3c8",
+  storageBucket: "portfolio-app-4d3c8.appspot.com",
+  messagingSenderId: "68573937169",
+  appId: "1:68573937169:web:14acf0479a33ff0003fbb0"
+});
+
+const db = getFirestore();
 
 class ContactMe extends React.Component {
 
@@ -13,6 +26,7 @@ class ContactMe extends React.Component {
           fields: {},
           errors: {},
         };
+        this.state.fields["text"]="";
       }
     
       handleValidation() {
@@ -72,12 +86,45 @@ class ContactMe extends React.Component {
         this.setState({ errors: errors });
         return formIsValid;
       }
+
+      async checkDb(){
+        let fields = this.state.fields;
+        const q1 = query(collection(db, "contact-info"), where("Email","==",fields["email"]));
+        const q2 = query(collection(db, "contact-info"), where("Phone","==",fields["phone"]));
+        const querySnapshot = await getDocs(q1);
+        if(!querySnapshot.empty){
+          console.log("Email found");
+          return false;
+        }
+        const querySnapshot2 = await getDocs(q2);
+        if(!querySnapshot2.empty){
+          console.log("Phone number found");
+          return false;
+        }
+        return true;
+      }
     
-      contactSubmit(e) {
+      async contactSubmit(e) {
         e.preventDefault();
-    
+        let fields = this.state.fields;
         if (this.handleValidation()) {
+          if(!(await this.checkDb())){
+            alert("Document already present");
+            window.location.reload();
+            return;
+          }
           alert("Form submitted");
+          try {
+            const docRef = await addDoc(collection(db, "contact-info"), {
+              Name: fields["name"],
+              Phone: fields["phone"],
+              Email: fields["email"],
+              Text: fields["text"]
+            });
+            console.log("Document written with ID: ", docRef.id);
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
         } else {
           alert("Form has errors.");
         }
@@ -93,7 +140,7 @@ class ContactMe extends React.Component {
     return (
         <div className="contact-me-background" id="contact-me">
                 <div className="contact-me-form">
-                    <h3><FontAwesomeIcon icon={faTelegramPlane} size="x" />&nbsp;Contact Me</h3>
+                    <h3><FontAwesomeIcon icon={faTelegramPlane} size="1x" />&nbsp;Contact Me</h3>
                     <form onSubmit={this.contactSubmit.bind(this)}>
                     <div className="form-group">
                             <label for="exampleInputEmail1" className="email-id">Name</label>
@@ -119,9 +166,9 @@ class ContactMe extends React.Component {
                         </div>
                         <div className="form-group">
                             <label for="exampleFormControlTextarea1" className="email-id">Additional Details!</label>
-                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={this.handleChange.bind(this, "text")} value={this.state.fields["text"]}></textarea>
                         </div>
-                        <button type="submit" class="btn btn-dark btn-lg">Submit</button>
+                        <button type="submit" className="btn btn-dark btn-lg">Submit</button>
                     </form>
                 </div>
                 <img src={image}/>
