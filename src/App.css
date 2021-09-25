@@ -95,10 +95,10 @@ nav ul li {
 .main-info h1 {
   font-family: "Source Code Pro", monospace;
   color: var(--primary-green);
-  padding-bottom: 5rem;
+  padding-bottom: 2rem;
 }
 
-.main-info h2 {
+.main-info h3 {
   font-family: "Source Code Pro", monospace;
   color: var(--c-text);
 }
@@ -110,7 +110,7 @@ nav ul li {
 
 @media (max-width: 768px) {
   .main-info h1,
-  h2 {
+  h3 {
     font-size: 1.5rem !important;
   }
   .typed-text {

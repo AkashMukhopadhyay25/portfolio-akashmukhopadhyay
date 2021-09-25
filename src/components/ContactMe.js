@@ -5,6 +5,7 @@ import image from "./image5.png";
 import { initializeApp } from "firebase/app";
 import { collection, addDoc, getDocs, query, where } from "firebase/firestore"; 
 import { getFirestore } from "firebase/firestore";
+import {FaComment} from "react-icons/fa";
 
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyBDBvpbFPKEhfwGKQFiRgldW2aFCf_vo6o",
@@ -140,18 +141,18 @@ class ContactMe extends React.Component {
     return (
         <div className="contact-me-background" id="contact-me">
                 <div className="contact-me-form">
-                    <h3><FontAwesomeIcon icon={faTelegramPlane} size="1x" />&nbsp;Contact Me</h3>
+                    <h3><FaComment size="50"/>&nbsp;Contact Me</h3>
                     <form onSubmit={this.contactSubmit.bind(this)}>
                     <div className="form-group">
                             <label for="exampleInputEmail1" className="email-id">Name</label>
-                            <input ref="name" type="name" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Akash Mukhopadhyay" onChange={this.handleChange.bind(this, "name")}
+                            <input ref="name" type="name" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name" onChange={this.handleChange.bind(this, "name")}
                 value={this.state.fields["name"]}/>
                 <span style={{ color: "red" }}>{this.state.errors["name"]}</span>
               <br />
                         </div>
                         <div className="form-group">
                             <label for="exampleInputEmail1" className="email-id">Email-Id</label>
-                            <input refs="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="akash.mukhopadhyay25@gmail.com" onChange={this.handleChange.bind(this, "email")}
+                            <input refs="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" onChange={this.handleChange.bind(this, "email")}
                 value={this.state.fields["email"]}/>
                             <small id="emailHelp" className="form-text text-muted">I promise it's safe with me.</small>
                             <span style={{ color: "red" }}>{this.state.errors["email"]}</span>
@@ -160,13 +161,13 @@ class ContactMe extends React.Component {
                         </div>
                         <div className="form-group">
                             <label for="exampleInputPassword1" className="email-id">Mobile No.</label>
-                            <input refs="phone" type="phone" className="form-control" id="exampleInputPassword1" placeholder="9608331940" onChange={this.handleChange.bind(this, "phone")}
+                            <input refs="phone" type="phone" className="form-control" id="exampleInputPassword1" placeholder="**********" onChange={this.handleChange.bind(this, "phone")}
                 value={this.state.fields["phone"]}
 />                      <span style={{ color: "red" }}>{this.state.errors["phone"]}</span><br/>
                         </div>
                         <div className="form-group">
                             <label for="exampleFormControlTextarea1" className="email-id">Additional Details!</label>
-                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={this.handleChange.bind(this, "text")} value={this.state.fields["text"]}></textarea>
+                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={this.handleChange.bind(this, "text")} value={this.state.fields["text"]} placeholder="Let's Connect."></textarea>
                         </div>
                         <button type="submit" className="btn btn-dark btn-lg">Submit</button>
                     </form>

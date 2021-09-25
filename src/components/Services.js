@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {FaReact} from "react-icons/fa";
 import {FaNode} from "react-icons/fa";
 import {FaPython} from "react-icons/fa";
+import {FaDatabase} from "react-icons/fa";
 
 
 
@@ -47,10 +48,13 @@ class Services extends React.Component {
                 <a>
                 <FaPython color="#90ee90" size="100"/>
                 </a>
+                <a>
+                    <FaDatabase color="#90ee90" size="100"/>
+                </a>
             </div>
             <h1 id="portfolio">Here Is a Glimpse To Some Of My Work</h1>
             <SimpleImageSlider
-            style={{ margin: '0 auto', padding: '1%', marginTop: "5%"}}
+            style={{ margin: '0 auto', padding: '0.5%', marginTop: "5%"}}
         width={600}
         height={600}
         images={images}
